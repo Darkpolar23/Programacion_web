@@ -1,0 +1,83 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = tarea2
+build_property.RootNamespace = tarea2
+build_property.ProjectDir = C:\Users\Dell E7450\OneDrive\Escritorio\programacion Web\tarea2\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Dell E7450\OneDrive\Escritorio\programacion Web\tarea2
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Acerca_de.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2VyY2FfZGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Ejercios/Eje1.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFamVyY2lvc1xFamUxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Ejercios/Eje3.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFamVyY2lvc1xFamUzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Ejercios/Eje5.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFamVyY2lvc1xFamU1LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Ejercios/Eje7.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFamVyY2lvc1xFamU3LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Ejercios/Eje9.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFamVyY2lvc1xFamU5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Inicio.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmljaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Layout/ItlaLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcSXRsYUxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-sosu2v2bjn
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ttvj377xiy
+
+[C:/Users/Dell E7450/OneDrive/Escritorio/programacion Web/tarea2/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ax0n9l8l0x

@@ -1,0 +1,32 @@
+@page "/Eje05"
+@rendermode InteractiveServer
+@inject IJSRuntime JSx
+
+<h3>Ejercio 5</h3>
+<p>Construir una función que reciba como parámetro un entero y retorne la cantidad de dígitos primos.</p>
+
+<h3>Cantidad de Dígitos Primos</h3>
+
+<div class="form-group mb-3">
+    <input class="form-control" type="number" @bind="inputNumber" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="CountPrimeDigits">Contar </button>
+
+<p>Cantidad de dígitos primos: @result</p>
+
+@code {
+    private int inputNumber;
+    private int result;
+
+    private void CountPrimeDigits()
+    {
+        string numberString = inputNumber.ToString();
+        result = numberString.Count(c => IsPrimeDigit(c - '0'));
+    }
+
+    private bool IsPrimeDigit(int digit)
+    {
+        return digit == 2 || digit == 3 || digit == 5 || digit == 7;
+    }
+}
