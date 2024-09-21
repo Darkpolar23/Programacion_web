@@ -1,0 +1,42 @@
+@page "/Eje03"
+@rendermode InteractiveServer
+@inject IJSRuntime JSx
+
+<h3>Ejercio 3</h3>
+<p>Construir una función que reciba como parámetro un entero y retorne la cantidad de dígitos.</p>
+
+<div class="form-group mb-3">
+    <label for="txtNumero">Numero</label>
+    <input type="number" class="form-control" id="txtNumero" @bind="numero" />
+</div>
+
+<div class="form-group">
+    <button class="btn btn-primary" @onclick="Calcular">Calcular</button>
+</div>
+
+<div class="form-group">
+
+    La cantidad de digitos: @resultado
+
+</div>
+
+@code {
+    string numero = "";
+
+    string resultado = "";
+
+    private void Calcular()
+    {
+        var num = 0;
+
+        if (int.TryParse(numero, out num))
+        {
+            resultado = num.ToString().Length.ToString();
+        }
+        else
+        {
+            resultado = "No es un numero";
+        }
+    }
+}
+

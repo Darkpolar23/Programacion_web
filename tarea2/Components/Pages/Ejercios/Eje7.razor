@@ -1,0 +1,28 @@
+@page "/Eje07"
+@rendermode InteractiveServer
+@inject IJSRuntime JSx
+
+<h3>Ejercio 7</h3>
+<p>Construir una función que reciba como parámetro un carácter y retorne el código ASCII asociado a él.</p>
+
+<h3>Obtener Código ASCII</h3>
+
+<div class="form-group mb-3">
+    <input class="form-control" type="text" @bind="inputChar" maxlength="1" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="GetAsciiCode">Obtener Código ASCII</button>
+
+
+<p>Código ASCII de '@inputChar': @asciiCode</p>
+
+
+@code {
+    private char inputChar;
+    private int asciiCode = -1;
+
+    private void GetAsciiCode()
+    {
+        asciiCode = (int)inputChar;
+    }
+}

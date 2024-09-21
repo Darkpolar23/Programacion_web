@@ -1,0 +1,35 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavMan
+
+
+<div class="container">
+
+    <header class="border-bottom">
+        <div class="">
+            <a href="/" class="Linkmudo">
+                <h1> Tarea 2</h1>
+            </a>
+            <p>Tareas super facil</p>
+        </div>
+    </header>
+
+    <div id="divMain">
+        @Body
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - ITLA
+        </div>
+    </footer>
+</div>
+
+@code {
+    void goTohome()
+
+    {
+
+        NavMan.NavigateTo("/");
+
+    }
+}

@@ -1,0 +1,14 @@
+#divMain[b-sosu2v2bjn]{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    min-height: 500px;
+}   
+
+.Linkmudo[b-sosu2v2bjn]{
+    color: #000;
+    text-decoration: none;
+}

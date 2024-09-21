@@ -1,0 +1,58 @@
+@page "/Eje09"
+@rendermode InteractiveServer
+@inject IJSRuntime JSx
+
+<h3>Ejercio 9</h3>
+<p>
+    Construir una funcion que reciba un entero y le calcule su factorial sabiendo que el factorial de
+    un numero es el resultado de multiplicar sucesivamente todos los enteros comprendidos entre
+    1 y el numero dado.El factorial de 0 es 1.No estan definidos los factoriales de numeros
+    negativos.
+</p>
+
+<h3>Obtener Código ASCII</h3>
+
+<div class="form-group mb-3">
+    <input type="number" @bind="inputNumber" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="CalculateFactorial">Calcular Factorial</button>
+
+@if (resultMessage != null)
+{
+    <p>@resultMessage</p>
+}
+
+@code {
+    private int inputNumber;
+    private string? resultMessage;
+
+    private void CalculateFactorial()
+    {
+        if (inputNumber < 0)
+        {
+            resultMessage = "El factorial no está definido para números negativos.";
+        }
+
+        else
+        {
+            long factorial = Factorial(inputNumber);
+            resultMessage = $"El factorial de {inputNumber} es {factorial}.";
+        }
+    }
+
+    private long Factorial(int number)
+    {
+        if (number == 0 || number == 1)
+        {
+            return 1;
+        }
+
+        long result = 1;
+        for (int i = 2; i <= number; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+}
