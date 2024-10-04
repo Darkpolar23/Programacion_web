@@ -1,0 +1,23 @@
+@page "/Tabla"
+@rendermode InteractiveServer
+
+<PageTitle>Tabla</PageTitle>
+
+<h1 >Tabla</h1>
+
+<div>
+    <label>Numero:</label>
+    <input type="numero"@bind="numero" class="form-control"/>
+</div>
+
+@if(numero > 0){
+
+    for(int i = 0; i <= 15; i++){
+
+        <div class=""> @numero x @i  = @(i * numero)</div>
+    }
+}
+
+@code{
+    int numero = 0;
+}

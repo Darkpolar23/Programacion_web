@@ -1,0 +1,106 @@
+@page "/registro/imprimir/{id}"
+@inject IJSRuntime JSx
+@using System.Text.Json
+@using System.Globalization
+@inject NavigationManager NavMan
+@rendermode InteractiveServer
+@layout PrintLayout
+
+<h3 class="col text-center">Informe del caso</h3>
+
+<div class="container">
+    
+    <div class="row my-4">
+        <div class="col text-center">
+            <img src="\img\OIP.jpeg" alt="Logo" class="img-fluid" style="width: 150px; height: auto;" />
+        </div>
+    </div>
+    
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h3>Reporte de Accidente</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-bordered">
+
+                <tbody>
+                    <tr>
+                        <td>Fecha</td>
+                        <td>@reporte.Fecha.ToString("d", CultureInfo.CurrentCulture)</td>
+                    </tr>
+                    <tr>
+                        <td>Descripción</td>
+                        <td>@reporte.Descripcion</td>
+                    </tr>
+                    <tr>
+                        <td>Costo Estimado</td>
+                        <td>@reporte.CostoEstimado.ToString("C", CultureInfo.CurrentCulture)</td>
+                    </tr>
+                    <tr>
+                        <td>Muertos</td>
+                        <td>@reporte.Muertos</td>
+                    </tr>
+                    <tr>
+                        <td>Heridos</td>
+                        <td>@reporte.Heridos</td>
+                    </tr>
+                    <tr>
+                        <td>Vehículos Involucrados</td>
+                        <td>@reporte.VehículosInvolucrados</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public string id { get; set; }
+
+    Reporte reporte = new Reporte();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var registrosJson = await JSx.InvokeAsync<string>("localStorage.getItem", "registros");
+
+            if (registrosJson != null)
+            {
+                var registros = JsonSerializer.Deserialize<List<Reporte>>(registrosJson);
+
+                foreach (var item in registros)
+                {
+                    if (item.Id == id)
+                    {
+                        reporte = item;
+                        break;
+                    }
+                }
+            }
+
+            if (reporte.Id == null || reporte.Id.Length < 5)
+            {
+                await JSx.InvokeVoidAsync("alert", "No se encontró el registro");
+                NavMan.NavigateTo("registro");
+            }
+
+            StateHasChanged();
+
+            await JSx.InvokeVoidAsync("window.print");
+
+            await JSx.InvokeVoidAsync("window.close");
+        }
+
+        else
+        {
+            await JSx.InvokeVoidAsync("alert", "no se encontro registro");
+            NavMan.NavigateTo("registro");
+        }
+    }
+}

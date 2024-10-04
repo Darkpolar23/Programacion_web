@@ -1,0 +1,38 @@
+@page "/Aprende_mas"
+
+<PageTitle>Aprende mas</PageTitle>
+
+<h1 >Aprende mas</h1>
+
+
+<div class="row">
+
+    @foreach(var video in videos)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/@video.Url/hqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">@video.Titulo</p>
+                <a href="https://www.youtube.com/watch?v=@video.Url" target="_blank" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        </div>
+    }
+</div>
+
+@code{
+    class Video{
+        public string? Titulo {get; set;}
+        public string? Url {get; set;}
+    }
+
+    List<Video> videos = new List<Video>{
+        new Video {Titulo = "Blazor Fundamentals Tutorial, Es muy bueno y largo ya que muestran lo fundamental.", Url = "CpbRAWgFBRQ"},
+        new Video {Titulo = "¿QUÉ ES BLAZOR? ¿EL NUEVO JAVASCRIPT DE MICROSOFT?, Este video me gusta por que enseña que es Blazor de manera corta y precisa", Url = "piNHZAMxVuk"},
+        new Video {Titulo = "Blazor Full Course For Beginners, Este video es un curso para principiantes y seguir aprendiendo", Url = "RBVIclt4sOo"},
+        new Video {Titulo = "Full stack web UI with Blazor in .NET 8 | .NET Conf 2023, UN conferencia my buena e interesante para aprender.", Url = "YwZdtLEtROA"},
+        new Video {Titulo = "Crea un simple GENERADOR de CÓDIGO QR en BLAZOR // ¡MUY FÁCIL!!, Este es un proyecto muy sencillo, interesante para aprender", Url = "ZyKZ_Iamyss"}
+    };
+}

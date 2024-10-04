@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea.bundle.scp.css",
+      "PackagePath": "staticwebassets\\tarea.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\chat_me.jpeg",
+      "PackagePath": "staticwebassets\\chat_me.jpeg"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\chat_me2.jpeg",
+      "PackagePath": "staticwebassets\\chat_me2.jpeg"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\programacion Web\\tarea_1\\tarea\\wwwroot\\mi22.jpeg",
+      "PackagePath": "staticwebassets\\mi22.jpeg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.tarea.props",
+      "PackagePath": "build\\tarea.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.tarea.props",
+      "PackagePath": "buildMultiTargeting\\tarea.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.tarea.props",
+      "PackagePath": "buildTransitive\\tarea.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.tarea.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
