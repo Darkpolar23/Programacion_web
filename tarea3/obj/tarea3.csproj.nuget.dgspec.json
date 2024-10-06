@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\programacion Web\\tarea3\\tarea3.csproj": {}
+    "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea3\\tarea3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\programacion Web\\tarea3\\tarea3.csproj": {
+    "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea3\\tarea3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\programacion Web\\tarea3\\tarea3.csproj",
+        "projectUniqueName": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea3\\tarea3.csproj",
         "projectName": "tarea3",
-        "projectPath": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\programacion Web\\tarea3\\tarea3.csproj",
+        "projectPath": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea3\\tarea3.csproj",
         "packagesPath": "C:\\Users\\Dell E7450\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\programacion Web\\tarea3\\obj\\",
+        "outputPath": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell E7450\\AppData\\Roaming\\NuGet\\NuGet.Config",

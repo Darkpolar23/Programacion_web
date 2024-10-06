@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\parcial1.bundle.scp.css",
+      "PackagePath": "staticwebassets\\parcial1.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial1\\wwwroot\\img\\mi22.jpeg",
+      "PackagePath": "staticwebassets\\img\\mi22.jpeg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.parcial1.props",
+      "PackagePath": "build\\parcial1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.parcial1.props",
+      "PackagePath": "buildMultiTargeting\\parcial1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.parcial1.props",
+      "PackagePath": "buildTransitive\\parcial1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.parcial1.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

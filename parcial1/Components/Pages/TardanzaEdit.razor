@@ -1,0 +1,112 @@
+﻿@page "/tardanza/nueva"
+@page "/tardanza/editar/{id}"
+@inject NavigationManager NavMan
+@inject IJSRuntime JSx
+@rendermode InteractiveServer
+@using System.Text.Json
+
+
+<EditForm Model="@tardanza" OnValidSubmit="@Guardartardanza">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="fecha" class="form-label">Fecha</label>
+        <InputDate id="fecha" class="form-control" @bind-Value="@tardanza.Fecha" />
+        <ValidationMessage For="@(() => tardanza.Fecha)" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="Matricula" class="form-label">Matrícula</label>
+                <InputText id="Matricula" class="form-control" @bind-Value="@tardanza.Matricula" />
+                <ValidationMessage For="@(() => tardanza.Matricula)" />
+            </div>
+
+            <div class="mb-3">
+                <label for="Nombre" class="form-label">Nombre</label>
+                <InputText id="Nombre" class="form-control" @bind-Value="@tardanza.Nombre" />
+                <ValidationMessage For="@(() => tardanza.Nombre)" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="Curso" class="form-label">Curso</label>
+                <InputText id="Curso" class="form-control" @bind-Value="@tardanza.Curso" />
+                <ValidationMessage For="@(() => tardanza.Curso)" />
+            </div>
+
+            <div class="mb-3">
+                <label for="Apellido" class="form-label">Apellido</label>
+                <InputText id="Apellido" class="form-control" @bind-Value="@tardanza.Apellido" />
+                <ValidationMessage For="@(() => tardanza.Apellido)" />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="motivo" class="form-label">Motivo</label>
+        <InputTextArea id="motivo" class="form-control" @bind-Value="@tardanza.Motivo" />
+        <ValidationMessage For="@(() => tardanza.Motivo)" />
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public string? id { get; set; } = null;
+
+    private Tardanza tardanza = new Tardanza();
+
+    List<Tardanza> tardanzas = new List<Tardanza>();
+
+    private void Guardartardanza()
+    {
+
+        if (string.IsNullOrEmpty(tardanza.Id))
+        {
+            tardanza.Id = Guid.NewGuid().ToString();
+            tardanzas.Add(tardanza);
+        }
+        else
+        {
+            var index = tardanzas.FindIndex(x => x.Id == tardanza.Id);
+            tardanzas[index] = tardanza;
+        }
+
+        JSx.InvokeVoidAsync("localStorage.setItem", "tardanzas", JsonSerializer.Serialize(tardanzas));
+
+        // guardar la tardanza
+        NavMan.NavigateTo("/");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var tardanzasJson = await JSx.InvokeAsync<string>("localStorage.getItem", "tardanzas");
+
+            if (tardanzasJson != null)
+            {
+
+                tardanzas = JsonSerializer.Deserialize<List<Tardanza>>(tardanzasJson);
+
+                if (id != null)
+                {
+                    tardanza = tardanzas.FirstOrDefault(r => r.Id == id) ?? new Tardanza();
+                }
+
+                StateHasChanged();
+            }
+
+        }
+    }
+
+}

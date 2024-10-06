@@ -1,0 +1,89 @@
+﻿@page "/"
+@inject NavigationManager NavMan
+@rendermode InteractiveServer
+@inject IJSRuntime JSx
+@using System.Text.Json
+
+<PageTitle>Regitro Tardanza</PageTitle>
+
+<div class="alert alert-primary">
+    <h1>Regitrar Tardanza</h1>
+</div>
+
+<div class="text-end mb-3">
+    <button class="btn btn-primary" @onclick="Nuevotardanza">Nueva Tardanza</button>
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Matricula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Motivo</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var tardanza in tardanzas)
+        {
+            <tr>
+
+                <td>@tardanza.Matricula</td>
+                <td>@tardanza.Nombre</td>
+                <td>@tardanza.Apellido</td>
+                <td>
+                    @((tardanza.Motivo.Length > 50) ? @tardanza.Motivo.Substring(0, 50) + "..." : @tardanza.Motivo)
+                </td>
+                <td>@tardanza.Fecha</td>
+
+                <td>
+                    <button @onclick="() => editarTardanza(tardanza)" class="btn btn-primary btn-sm">Editar</button>
+                    <button @onclick="() => eliminarTardanza(tardanza)" class="btn btn-danger btn-sm">Eliminar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+
+    List<Tardanza> tardanzas = new List<Tardanza>();
+
+    private void Nuevotardanza()
+    {
+        NavMan.NavigateTo("tardanza/nueva");
+    }
+
+    private void editarTardanza(Tardanza tardanza)
+    {
+        NavMan.NavigateTo("tardanza/editar/" + tardanza.Id);
+    }
+    private async Task eliminarTardanza(Tardanza tardanza)
+    {
+        var rs = await JSx.InvokeAsync<bool>("confirm", "¿Está seguro de eliminar el tardanza?");
+        if (rs)
+        {
+            tardanzas.Remove(tardanza);
+            await JSx.InvokeVoidAsync("localStorage.setItem", "tardanzas", JsonSerializer.Serialize(tardanzas));
+            StateHasChanged();
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+            var tardanzasJson = await JSx.InvokeAsync<string>("localStorage.getItem", "tardanzas");
+
+            if (tardanzasJson != null)
+            {
+                tardanzas = JsonSerializer.Deserialize<List<Tardanza>>(tardanzasJson);
+                StateHasChanged();
+            }
+
+        }
+    }
+}
