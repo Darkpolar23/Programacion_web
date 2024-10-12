@@ -1,0 +1,48 @@
+@page "/personajes"
+@rendermode InteractiveServer
+@inject SerieContext Sc
+
+<h3>Personajes </h3>
+
+<table class="table table-striped">
+
+  <thead class="table-light">
+    <tr>
+      <th>Nombre</th>
+      <th>Apodo</th>
+      <th>Raza</th>
+      <th>Foto</th>
+      <th>Edad</th>
+      <th>Signo Zodiacal</th>
+      <th>Poder Característico</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @foreach (var item in lista)
+    {
+      <tr>
+        <td>@item.Nombre</td>
+        <td>@item.Apodo</td>
+        <td>@item.Raza</td>
+        <td><img src="@item.FotoUrl" alt="@item.Nombre" width="100" /></td>
+        <td>@item.Edad</td>
+        <td>@item.SignoZodiacal</td>
+        <td>@item.PoderCaracteristico</td>
+      </tr>
+    }
+  </tbody>
+
+</table>
+
+@code{
+    
+    List<Personaje> lista = new List<Personaje>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        lista = Sc.Personajes.ToList();
+        StateHasChanged();
+    }
+}
+

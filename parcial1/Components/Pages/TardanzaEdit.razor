@@ -83,7 +83,7 @@
 
         JSx.InvokeVoidAsync("localStorage.setItem", "tardanzas", JsonSerializer.Serialize(tardanzas));
 
-        // guardar la tardanza
+        // guardar y regresar a la pafina de incio
         NavMan.NavigateTo("/");
     }
 

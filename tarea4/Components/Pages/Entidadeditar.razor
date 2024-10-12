@@ -1,0 +1,166 @@
+@page "/entidad/{tipo}/editar"
+@page "/entidad/{Tipo}/editar/{id:int}"
+@rendermode InteractiveServer
+@inject NavigationManager NavMan
+@inject IJSRuntime JSx
+@inject SerieContext Sc
+
+<PageTitle>Editar entidad</PageTitle>
+
+<h3>Editando @Tipo</h3>
+
+<EditForm Model="instancia" OnValidSubmit="GuardarDatos">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <InputText id="Nombre" class="form-control" @bind-Value="instancia.Nombre" />
+    </div>
+
+    <div class="form-group">
+        <label for="Pais">Pais</label>
+        <InputText id="Pais" class="form-control" @bind-Value="instancia.Pais" />
+    </div>
+
+    <div class="form-group">
+        <label for="Idioma">Idioma</label>
+        <InputText id="Idioma" class="form-control" @bind-Value="instancia.Idioma" />
+    </div>
+
+    <div class="form-group">
+        <label for="Resumen">Resumen</label>
+        <InputTextArea id="Resumen" class="form-control" @bind-Value="instancia.Resumen" />
+    </div>
+
+    <div class="form-group">
+        <label for="FotoUrl">Foto</label>
+        <input type="url" id="FotoUrl" class="form-control" @bind="instancia.FotoUrl" />
+    </div>
+
+    <h4>Personajes</h4>
+
+    <table class="table table-striped">
+        
+        <thead class="table-light">
+            <tr>
+                <th>Nombre</th>
+                <th>Apodo</th>
+                <th>Raza</th>
+                <th>Foto</th>
+                <th>Edad</th>
+                <th>Signo Zodiacal</th>
+                <th>Poder Característico</th>
+                <td>
+                    <button type="button" class="btn btn-primary" @onclick="agregarPersonaje">Agregar</button>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in instancia.Personajes)
+            {
+                <tr>
+                    <td>
+                        <InputText type="text" @bind-Value="item.Nombre" class="form-control" />
+                    </td>
+                    <td>
+                        <InputText type="text" @bind-Value="item.Apodo" class="form-control" />
+                    </td>
+                    <td>
+                        <InputText type="text" @bind-Value="item.Raza" class="form-control" />
+                    </td>
+                    <td>
+                        <InputText type="text" @bind-Value="item.FotoUrl" class="form-control" />
+                    </td>
+                    <td>
+                        <InputNumber type="number" @bind-Value="item.Edad" class="form-control" />
+                    </td>
+                    <td>
+                        <InputText type="text" @bind-Value="item.SignoZodiacal" class="form-control" />
+                    </td>
+                    <td>
+                        <InputText type="text" @bind-Value="item.PoderCaracteristico" class="form.control" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-center mg-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public string Tipo { get; set; } = "";
+
+    [Parameter]
+    public int Id { get; set; } = 0;
+
+    void agregarPersonaje()
+    {
+        instancia.Personajes.Add(new Personaje());
+        StateHasChanged();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        switch (Tipo)
+        {
+            case "libros":
+                tipoEntidad = TipoEntidad.Libro;
+                break;
+            case "peliculas":
+                tipoEntidad = TipoEntidad.Pelicula;
+                break;
+            case "series":
+                tipoEntidad = TipoEntidad.Serie;
+                break;
+            default:
+                NavMan.NavigateTo("/");
+                break;
+        }
+    }
+
+    SeriePeliculaLibro instancia = new SeriePeliculaLibro();
+
+    TipoEntidad tipoEntidad;
+
+    async Task GuardarDatos()
+    {
+
+        instancia.Tipo = tipoEntidad;
+
+        Console.WriteLine("Guardando datos");
+
+        if (instancia.Id > 0)
+        {
+            Sc.SeriePeliculalibros.Update(instancia);
+        }
+        else
+        {
+            Sc.SeriePeliculalibros.Add(instancia);
+        }
+
+        //Sc.SeriePeliculalibros.Add(instancia);
+        await Sc.SaveChangesAsync();
+        await JSx.InvokeVoidAsync("alert", "Datos guardados");
+        NavMan.NavigateTo($"/entidad/{Tipo}");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (Id > 0)
+            {
+                Console.WriteLine("cargando" + Id);
+                instancia = Sc.SeriePeliculalibros.FirstOrDefault(x => x.Id == Id) ?? new SeriePeliculaLibro();
+                StateHasChanged();
+            }
+        }
+    }
+}
