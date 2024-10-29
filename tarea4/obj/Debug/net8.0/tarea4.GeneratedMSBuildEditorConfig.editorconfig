@@ -22,10 +22,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Entidad.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbnRpZGFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,20 +30,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFbnRpZGFkZWRpdGFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Error.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Inicio.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmljaW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Personajes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQZXJzb25hamVzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Dell E7450/OneDrive/Escritorio/Programacion_WEB/tarea4/Components/Routes.razor]

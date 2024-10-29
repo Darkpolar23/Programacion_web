@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\tarea5.props" />
+</Project>
