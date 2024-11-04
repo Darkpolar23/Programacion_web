@@ -1,0 +1,83 @@
+﻿<!--Pagina de agragar y editar -->
+@page "/entidad/editar"
+@page "/entidad/editar/{id:int}"
+@rendermode InteractiveServer
+@inject NavigationManager NavMan
+@inject IJSRuntime JSx
+@inject RegistrosVisita RV
+
+<PageTitle>Editar visita</PageTitle>
+
+<h1>Agregar</h1>
+
+<EditForm Model="instancia" OnValidSubmit="GuardarDatos">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group mt-3">
+        <label for="Telefono">Telefono</label>
+        <InputText id="Telefono" class="form-control" @bind-Value="instancia.Teléfono" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label for="Nombre">Nombre</label>
+        <InputText id="Nombre" class="form-control" @bind-Value="instancia.Nombre" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label for="Idioma">Apellido</label>
+        <InputText id="Idioma" class="form-control" @bind-Value="instancia.Apellido" />
+    </div>
+
+    <div class="form-group mt-3">
+        <label for="CorreoElectrónico">CorreoElectrónico</label>
+        <InputText id="CorreoElectrónico" class="form-control" @bind-Value="instancia.CorreoElectrónico" />
+    </div>
+
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+</EditForm>
+
+
+@code {
+   
+    [Parameter]
+    public int Id { get; set; } = 0;
+
+    RegistroVisita instancia = new RegistroVisita();
+   
+    async Task GuardarDatos()
+    {
+
+        if (instancia.Id > 0)
+        {
+            RV.RegistroVisitas.Update(instancia);
+        }
+        else
+        {
+            RV.RegistroVisitas.Add(instancia);
+        }
+
+        await RV.SaveChangesAsync();
+        await JSx.InvokeVoidAsync("alert", "Datos guardados");
+        NavMan.NavigateTo($"/visitas");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            if (Id > 0)
+            {
+                Console.WriteLine("cargando" + Id);
+                instancia = RV.RegistroVisitas.FirstOrDefault(x => x.Id == Id) ?? new RegistroVisita();
+                StateHasChanged();
+            }
+        }
+    }
+    
+}
+
+

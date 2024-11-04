@@ -11,7 +11,7 @@ public class Tardanza
     public DateTime Fecha { get; set; } = DateTime.Now;
 
     [Required(ErrorMessage = "El campo Matricula es requerido")]
-    [MinLength(9, ErrorMessage = "El campo Matricula debe tener al menos 9 caracteres")]
+    [MinLength(10, ErrorMessage = "El campo Matricula debe tener al menos 9 caracteres")]
     public string Matricula { get; set; } = "";
 
     [Required(ErrorMessage = "El campo Apellido es requerido")]

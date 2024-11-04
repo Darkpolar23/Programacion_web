@@ -1,0 +1,99 @@
+<!-- Pagina para mostrar los datos guardados -->
+@page "/visitas"
+@rendermode InteractiveServer
+@inject NavigationManager NavMan
+@inject RegistrosVisita RV
+@inject IJSRuntime JSx
+
+<PageTitle>Visitas</PageTitle>
+
+<div class="alert alert-info" role="alert">
+  <h4>Visitas Agregadas</h4>
+</div>
+
+
+<div class="text-end">
+    <button type="button" @onclick="agregarNuevo" class="btn btn-primary">Agregar</button>
+</div
+
+<table class="table table-striped mt-4">
+    <thead class="table-light">
+        <tr>
+            <th>Teléfono</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo Electrónico</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in lista)
+        {
+            <tr>
+                <td>@item.Teléfono</td>
+                <td>@item.Nombre</td>
+                <td>@item.Apellido</td>
+                <td>@item.CorreoElectrónico</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => editar(item.Id)">
+                        <i class="fas fa-edit"></i> 
+                    </button>
+                    <button class="btn btn-danger" @onclick="() => Eliminar(item.Id)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@code {
+    
+    //volvemos nuestra lista un modelo
+    List<RegistroVisita> lista = new List<RegistroVisita>();
+    
+    public int id { get; set; }
+    
+    private void agregarNuevo()
+    {
+        NavMan.NavigateTo($"entidad/editar");
+    }
+
+    private void editar(int id)
+    {
+        NavMan.NavigateTo($"entidad/editar/{id}");
+    }
+
+    private async Task Eliminar(int id)
+    {
+        var alert = await JSx.InvokeAsync<bool>("confirm", "¿Está seguro de eliminar la visita");
+        if (alert)
+        {
+            var visita = lista.FirstOrDefault(v => v.Id == id);
+            if (visita != null)
+            {
+                // Elimina el elemento de la lista y la base de datos
+                RV.RegistroVisitas.Remove(visita);
+                await RV.SaveChangesAsync();
+
+                // Actualiza la lista en la interfaz
+                lista = RV.RegistroVisitas.ToList();
+                StateHasChanged();
+            }
+            
+        };
+    }
+    
+        
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            lista = RV.RegistroVisitas.ToList();
+            StateHasChanged();
+        }
+    }
+    
+}
