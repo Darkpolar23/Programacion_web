@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jMeVWF/gXh4nADUg+lL9IAOJ95/lj7kc+pJgEn9+vtY=",
+  "Hash": "Ul2YVg9RxGJuqU6+W5v7YnNk4FJNtysM7psY8SNxF3k=",
   "Source": "parcial2",
   "BasePath": "_content/parcial2",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial2\\wwwroot\\img\\mi22.jpeg",
+      "SourceId": "parcial2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial2\\wwwroot\\",
+      "BasePath": "_content/parcial2",
+      "RelativePath": "img/mi22.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\mi22.jpeg"
     }
   ]
 }

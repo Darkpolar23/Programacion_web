@@ -1,0 +1,19 @@
+﻿@page "/mapa"
+@using Microsoft.EntityFrameworkCore
+@rendermode InteractiveServer
+@inject AppDbContext db
+
+<PageTitle>mapa</PageTitle>
+
+<AspMap Detenciones="detenciones"/>
+
+@code {
+  
+    private List<Detencion> detenciones = new List<Detencion>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        detenciones = await db.Detenciones.ToListAsync();
+    }
+}
+

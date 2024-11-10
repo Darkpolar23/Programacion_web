@@ -1,0 +1,21 @@
+﻿@page "/calendario"
+@rendermode InteractiveServer
+@using System.Globalization
+@using Microsoft.EntityFrameworkCore
+@inject IJSRuntime JS
+@inject AppDbContext db
+
+<PageTitle>calendario</PageTitle>
+
+<Calendar Detenciones="detenciones" />
+
+@code {
+    //Mira este codigo para trasportar datos en un lado a otro
+    private List<Detencion> detenciones = new List<Detencion>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        //aqui sucede la magia fiajete en "Detenciones" vienen de Datacontext 
+        detenciones = await db.Detenciones.ToListAsync();
+    }
+}

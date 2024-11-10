@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\tarea7.bundle.scp.css",
+      "PackagePath": "staticwebassets\\tarea7.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\wwwroot\\Img\\mi22.jpeg",
+      "PackagePath": "staticwebassets\\Img\\mi22.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\tarea7\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.tarea7.props",
+      "PackagePath": "build\\tarea7.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.tarea7.props",
+      "PackagePath": "buildMultiTargeting\\tarea7.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.tarea7.props",
+      "PackagePath": "buildTransitive\\tarea7.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.tarea7.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

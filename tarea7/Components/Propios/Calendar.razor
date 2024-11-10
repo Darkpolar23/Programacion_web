@@ -1,0 +1,104 @@
+@rendermode InteractiveServer
+@using System.Globalization
+@inject IJSRuntime JS
+
+@* Parámetros *@
+@code {
+    [Parameter]
+    public List<Detencion> Detenciones { get; set; } = new List<Detencion>();
+
+    private DateTime currentMonth = DateTime.Today;
+    private Dictionary<int, int> detencionesPorDia = new Dictionary<int, int>();
+
+    protected override void OnParametersSet()
+    {
+        CalcularDetencionesPorDia();
+    }
+
+    private void CalcularDetencionesPorDia()
+    {
+        detencionesPorDia = Detenciones
+            .Where(d => d.FechaDetencion.Year == currentMonth.Year && d.FechaDetencion.Month == currentMonth.Month)
+            .GroupBy(d => d.FechaDetencion.Day)
+            .ToDictionary(g => g.Key, g => g.Count());
+    }
+
+    private void CambiarMes(int meses)
+    {
+        currentMonth = currentMonth.AddMonths(meses);
+        CalcularDetencionesPorDia();
+    }
+}
+
+<h3>@currentMonth.ToString("MMMM yyyy", CultureInfo.CreateSpecificCulture("es-ES"))</h3>
+
+<div class="d-flex justify-content-between mb-3">
+    <button class="btn btn-primary" @onclick="() => CambiarMes(-1)">Mes Anterior</button>
+    <button class="btn btn-primary" @onclick="() => CambiarMes(1)">Mes Siguiente</button>
+</div>
+
+<div class="calendar-grid">
+    <!-- Encabezados de días de la semana -->
+    @foreach (var dayOfWeek in new[] { "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom" })
+    {
+        <div class="calendar-header">@dayOfWeek</div>
+    }
+
+    <!-- Espacio en blanco para días antes del primer día del mes -->
+    @{
+        int startDay = (int)new DateTime(currentMonth.Year, currentMonth.Month, 1).DayOfWeek;
+        int emptyDays = (startDay == 0 ? 6 : startDay - 1); // Ajuste para que Lunes sea el primer día
+    }
+    @for (int i = 0; i < emptyDays; i++)
+    {
+        <div class="calendar-day empty"></div>
+    }
+
+    <!-- Días del mes -->
+    @for (int day = 1; day <= DateTime.DaysInMonth(currentMonth.Year, currentMonth.Month); day++)
+    {
+        <div class="calendar-day">
+            <strong>@day</strong><br />
+            @if (detencionesPorDia.ContainsKey(day))
+            {
+                <span>Detenciones: @detencionesPorDia[day]</span>
+            }
+        </div>
+    }
+</div>
+
+<style>
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+    }
+
+    .calendar-header {
+        font-weight: bold;
+        text-align: center;
+        padding: 10px 0;
+        background-color: #343a40;
+        color: white;
+        border-radius: 4px;
+    }
+
+    .calendar-day {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+
+    .calendar-day.empty {
+        background-color: transparent;
+        border: none;
+    }
+
+    .calendar-day strong {
+        font-size: 1.2em;
+    }
+</style>
+<h1></h1>
+<h1></h1>

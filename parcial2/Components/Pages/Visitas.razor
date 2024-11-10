@@ -53,6 +53,7 @@
     
     //volvemos nuestra lista un modelo
     List<RegistroVisita> lista = new List<RegistroVisita>();
+
     
     public int id { get; set; }
     
@@ -69,6 +70,7 @@
     private async Task Eliminar(int id)
     {
         var alert = await JSx.InvokeAsync<bool>("confirm", "¿Está seguro de eliminar la visita");
+
         if (alert)
         {
             var visita = lista.FirstOrDefault(v => v.Id == id);
@@ -86,7 +88,6 @@
         };
     }
     
-        
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

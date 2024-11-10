@@ -7,7 +7,6 @@ using System.ComponentModel.DataAnnotations;
 //para colocar los limites a los futuros campos
 public class RegistroVisita
 {
-
     public int Id { get; set; }
 
     [Required(ErrorMessage = "El campo Teléfono es requerido")]
@@ -19,7 +18,7 @@ public class RegistroVisita
     public string? Nombre { get; set; }
 
     [Required(ErrorMessage = "El campo Apellido es requerido")]
-    [MinLength(4, ErrorMessage = "El campo Apellido debe tener al menos 7 caracteres")]
+    [MinLength(4, ErrorMessage = "El campo Apellido debe tener al menos 4 caracteres")]
     public string? Apellido { get; set; }
 
     [Required(ErrorMessage = "El campo Correo Electrónico es requerido")]

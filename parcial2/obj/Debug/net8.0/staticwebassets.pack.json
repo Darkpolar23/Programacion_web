@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\Dell E7450\\OneDrive\\Escritorio\\Programacion_WEB\\parcial2\\wwwroot\\img\\mi22.jpeg",
+      "PackagePath": "staticwebassets\\img\\mi22.jpeg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.parcial2.props",
       "PackagePath": "build\\parcial2.props"
     },
