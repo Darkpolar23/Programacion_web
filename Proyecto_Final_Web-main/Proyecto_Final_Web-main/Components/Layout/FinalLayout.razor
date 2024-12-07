@@ -1,0 +1,129 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="page">
+    <div class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Web DIGESETT</a> <!-- Logo de la aplicación -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span> <!-- Icono de menú para dispositivos móviles -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <!-- Dropdown para seleccionar el módulo -->
+                        <a class="nav-link dropdown-toggle" href="#" id="modulosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar Módulo
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="modulosDropdown">
+                            <li><a class="dropdown-item" href="/agentes">Módulo Agentes</a></li>
+                            <li><a class="dropdown-item" href="/oficina-central">Módulo Oficina Central</a></li>
+                            <li><a class="dropdown-item" href="/login-superuser">Módulo Administrativo </a></li>
+                        </ul>
+                    </li>
+                    @if (IsInModuleAgentes)
+                    {
+                        <!-- Opciones específicas del Módulo Agentes -->
+                        <li class="nav-item"><a class="nav-link" href="/registro-multa">Registro Multas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/mapa-multas">Mapa Multas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/comisiones">Comisiones</a></li>
+                    }
+                    else if (IsInModuleOficinaCentral)
+                    {
+                        <!-- Opciones específicas del Módulo Oficina Central -->
+                        <li class="nav-item"><a class="nav-link" href="/modulo2/gestion-multas">Gestionar Multas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/modulo2/reporte-ingresos">Reporte de Ingresos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/modulo2/mapa-multas-central">Mapa de Multas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/modulo2/gestion-agentes">Gestionar Agentes</a></li>
+                    }
+                    else if (IsInModuleAdministrativo)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/administrativo/gestionar-usuarios">Gestionar Usuarios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/administrativo/gestionar-conceptos-multas">Gestionar Conceptos de Multas</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        @Body
+    </div>
+</div>
+
+<style>
+    /* Color del texto de los enlaces de la barra de navegación */
+.navbar-nav .nav-link {
+    color: #ffffff; /* Blanco */
+    font-size: 16px; /* Tamaño ajustable */
+    font-weight: bold; /* Negrita para destacar */
+    transition: color 0.3s ease; /* Suaviza el cambio de color al hacer hover */
+}
+
+/* Color del texto de la marca (título) de la navbar */
+.navbar-brand {
+    color: #ffffff; /* Blanco */
+    font-size: 20px; /* Tamaño mayor para resaltar el título */
+    font-weight: bold; /* Negrita */
+    text-transform: uppercase; /* Texto en mayúsculas para dar más presencia */
+}
+
+/* Color de los enlaces al hacer hover */
+.navbar-nav .nav-link:hover {
+    color: #25e009; /* Color dorado */
+}
+
+/* Icono del menú hamburguesa */
+.navbar-toggler-icon {
+    background-color: #ffffff; /* Blanco */
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+}
+
+/* Color de fondo de la navbar */
+.navbar {
+    background-color: #359e05; /* Fondo de color vino */
+    padding: 10px 15px; /* Espaciado interno */
+}
+
+/* Input personalizado */
+.custom-input {
+    width: 300px; /* Ancho del input */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ffffff; /* Borde blanco */
+    color: #350119; /* Texto color vino */
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+/* Ajustes para dispositivos móviles */
+.media (max-width: 768px) {
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Reduce el tamaño del texto en pantallas pequeñas */
+    }
+    .navbar-brand {
+        font-size: 18px; /* Ajusta el tamaño del título */
+    }
+}
+
+</style>
+
+@code {
+    // Verifica si la URL actual corresponde al Módulo Agentes
+    private bool IsInModuleAgentes => NavigationManager.Uri.Contains("/agentes") || 
+                                    NavigationManager.Uri.Contains("/registro-multa") ||
+                                    NavigationManager.Uri.Contains("/mapa-multas") ||
+                                    NavigationManager.Uri.Contains("/comisiones");
+
+    // Verifica si la URL actual corresponde al Módulo Oficina Central
+    private bool IsInModuleOficinaCentral => NavigationManager.Uri.Contains("/oficina-central") ||
+                                            NavigationManager.Uri.Contains("/modulo2/gestion-multas") ||
+                                            NavigationManager.Uri.Contains("/modulo2/reporte-ingresos") ||
+                                            NavigationManager.Uri.Contains("/modulo2/mapa-multas-central") ||
+                                            NavigationManager.Uri.Contains("/modulo2/gestion-agentes");
+
+    // Verifica si la URL actual corresponde al Módulo Administrativo
+    private bool IsInModuleAdministrativo => NavigationManager.Uri.Contains("/login-superuser")||
+                                            NavigationManager.Uri.Contains("/administrativo/gestionar-usuarios") ||
+                                            NavigationManager.Uri.Contains("/administrativo/gestionar-conceptos-multas");
+}

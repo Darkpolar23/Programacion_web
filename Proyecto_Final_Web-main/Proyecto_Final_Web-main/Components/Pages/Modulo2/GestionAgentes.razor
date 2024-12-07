@@ -1,0 +1,182 @@
+@page "/modulo2/gestion-agentes"
+@using Digesett.Models
+@using Digesett.Services
+@inject IAgentService AgentService
+@inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+<h3>Gestión de Agentes</h3>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <button class="btn btn-primary" @onclick="() => ShowAgentModal()">Agregar Agente</button>
+    </div>
+</div>
+
+@if (agents != null && agents.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cédula</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var agent in agents)
+                {
+                    <tr>
+                        <td>@agent.Name</td>
+                        <td>@agent.Cedula</td>
+                        <td>@(agent.IsActive ? "Activo" : "Inactivo")</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-danger btn-sm" @onclick="() => DeleteAgent(agent)">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">No hay agentes registrados.</div>
+}
+
+@if (showModal)
+{
+    <div class="modal fade show" style="display: block;" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@(selectedAgent == null ? "Crear Nuevo Agente" : "Editar Agente")</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="agentName" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="agentName" @bind="agentName" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="agentCedula" class="form-label">Cédula:</label>
+                        <input type="text" class="form-control" id="agentCedula" @bind="agentCedula" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="agentPassword" class="form-label">Contraseña:</label>
+                        <input type="password" class="form-control" id="agentPassword" @bind="agentPassword" />
+                    </div>
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger">@errorMessage</div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" @onclick="SaveAgent">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<Agent> agents;
+    private bool showModal = false;
+    private Agent selectedAgent;
+    private string agentName;
+    private string agentCedula;
+    private string agentPassword;
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAgents();
+    }
+
+    private async Task LoadAgents()
+    {
+        agents = await AgentService.GetAllAgentsAsync();
+    }
+
+    private void ShowAgentModal(Agent agent = null)
+    {
+        selectedAgent = agent;
+        if (agent != null)
+        {
+            agentName = agent.Name;
+            agentCedula = agent.Cedula;
+            agentPassword = "";
+        }
+        else
+        {
+            agentName = "";
+            agentCedula = "";
+            agentPassword = "";
+        }
+        errorMessage = "";
+        showModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showModal = false;
+        selectedAgent = null;
+        errorMessage = "";
+    }
+
+    private async Task SaveAgent()
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(agentName) || string.IsNullOrWhiteSpace(agentCedula) || string.IsNullOrWhiteSpace(agentPassword))
+            {
+                errorMessage = "Todos los campos son obligatorios";
+                return;
+            }
+
+            var newAgent = new Agent
+            {
+                Name = agentName,
+                Cedula = agentCedula,
+                Password = agentPassword,
+                IsActive = true
+            };
+
+            await AgentService.CreateAgentAsync(newAgent);
+            await LoadAgents();
+            CloseModal();
+        }
+        catch (InvalidOperationException ex)
+        {
+            errorMessage = ex.Message;
+        }
+        catch (Exception)
+        {
+            errorMessage = "Error al guardar el agente";
+        }
+    }
+
+    private async Task DeleteAgent(Agent agent)
+    {
+        try
+        {
+            if (await JSRuntime.InvokeAsync<bool>("confirm", new[] { $"¿Está seguro que desea eliminar al agente {agent.Name}?" }))
+            {
+                await AgentService.DeleteAgentAsync(agent.Id);
+                await LoadAgents();
+            }
+        }
+        catch (Exception)
+        {
+            errorMessage = "Error al eliminar el agente";
+        }
+    }
+}
